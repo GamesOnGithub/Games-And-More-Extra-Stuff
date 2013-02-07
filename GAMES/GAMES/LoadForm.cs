@@ -29,17 +29,13 @@ namespace GAMES
         void load()
         {
             //Set operation count
-            progressBar1.Maximum = 4;
+            progressBar1.Maximum = 3;
 
             statusLabel.Text = "Lade Daten...";
             //TODO: Create all useful objects
             progressBar1.Value++;
 
-            statusLabel.Text = "Überprüfe auf Update für GAMES...";
-            //TODO: Update-Check for GAMES
-            progressBar1.Value++;
-
-            statusLabel.Text = "Überprüfe Programme...";
+            statusLabel.Text = "Überprüfe auf Programme zum Download...";
             //TODO: Check programs to update
             progressBar1.Value++;
 
