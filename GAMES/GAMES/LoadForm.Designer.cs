@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.statusLabel = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.progressBar2 = new System.Windows.Forms.ProgressBar();
             this.statusLabel2 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -61,7 +62,7 @@
             // progressBar1
             // 
             this.progressBar1.Location = new System.Drawing.Point(21, 70);
-            this.progressBar1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.progressBar1.Margin = new System.Windows.Forms.Padding(4);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(372, 28);
             this.progressBar1.TabIndex = 2;
@@ -69,7 +70,7 @@
             // progressBar2
             // 
             this.progressBar2.Location = new System.Drawing.Point(21, 140);
-            this.progressBar2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.progressBar2.Margin = new System.Windows.Forms.Padding(4);
             this.progressBar2.Name = "progressBar2";
             this.progressBar2.Size = new System.Drawing.Size(372, 28);
             this.progressBar2.TabIndex = 4;
@@ -85,29 +86,23 @@
             this.statusLabel2.TabIndex = 3;
             this.statusLabel2.Text = "Bitte Warten...";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(18, 211);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 17);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "label2";
-            // 
             // LoadForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(409, 270);
-            this.Controls.Add(this.label2);
+            this.ClientSize = new System.Drawing.Size(409, 183);
             this.Controls.Add(this.progressBar2);
             this.Controls.Add(this.statusLabel2);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.statusLabel);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "LoadForm";
-            this.Text = "Bitte Warten...";
+            this.Text = "GAMES - Lade...";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoadForm_FormClosing);
             this.Load += new System.EventHandler(this.LoadForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -121,6 +116,6 @@
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.ProgressBar progressBar2;
         private System.Windows.Forms.Label statusLabel2;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

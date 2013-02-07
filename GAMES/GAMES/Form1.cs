@@ -22,8 +22,8 @@ namespace GAMES
         //Load this form
         private void Form1_Load(object sender, EventArgs e)
         {
-            //LoadForm lForm = new LoadForm();
-            //lForm.ShowDialog();
+            LoadForm lForm = new LoadForm();
+            lForm.ShowDialog();
             //zufallsPicBoxGrossSetzen();
         }
         void zufallsPicBoxGrossSetzen()
@@ -89,7 +89,18 @@ namespace GAMES
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(LoadForm.gxxlPath);
+            try
+            {
+                System.Diagnostics.Process.Start(LoadForm.gxxlPath);
+            }
+            catch (Exception ex)
+            {
+                if (MessageBox.Show("Gourmet XXL ist noch nicht installiert! Soll ein Update gemacht werden?", "Fehler", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    LoadForm lForm = new LoadForm();
+                    lForm.ShowDialog();
+                }
+            }
         }
 
         private void pictureBox2_MouseEnter(object sender, EventArgs e)
@@ -123,12 +134,34 @@ namespace GAMES
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(LoadForm.rsPath);
+            try
+            {
+                System.Diagnostics.Process.Start(LoadForm.rsPath);
+            }
+            catch(Exception ex)
+            {
+                if (MessageBox.Show("RanSen ist noch nicht installiert! Soll ein Update gemacht werden?", "Fehler", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    LoadForm lForm = new LoadForm();
+                    lForm.ShowDialog();
+                }
+            }
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(LoadForm.tttPath);
+            try
+            {
+                System.Diagnostics.Process.Start(LoadForm.tttPath);
+            }
+            catch (Exception ex)
+            {
+                if (MessageBox.Show("TicTacToe ist noch nicht installiert! Soll ein Update gemacht werden?", "Fehler", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    LoadForm lForm = new LoadForm();
+                    lForm.ShowDialog();
+                }
+            }
         }
     }
 }
