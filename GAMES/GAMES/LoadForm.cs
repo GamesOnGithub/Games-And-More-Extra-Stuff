@@ -37,15 +37,18 @@ namespace GAMES
         public static string tttUriPath;
         public static string rsPath;
         public static string rsUriPath;
-        bool isAllowedToClose = false;
+        public static string gxxlinfo;
+        public static string rsinfo;
+        public static string tttinfo;
 
+        bool isAllowedToClose = false;
         bool isFinisedDonwloading = false;
 
         //Load-Method
         void load()
         {
             //Set operation count
-            progressBar1.Maximum = 5;
+            progressBar1.Maximum = 6;
 
             WebClient Webclient1 = new WebClient();
             Webclient1.DownloadFileCompleted += new AsyncCompletedEventHandler(DownloadCompleted);
@@ -206,6 +209,19 @@ namespace GAMES
             #endregion
 
 
+            #region infosAbrufen
+            statusLabel.Text = "Lade Programminfos...";
+
+            string s2 = FTPClass.DateiAuslesen(@"ftp://ftp.lima-city.de/GAMES/infos.txt", "Hausseite", "tingle25");
+            string[] lines2 = s2.Split(new string[] { "|" }, StringSplitOptions.None);
+
+            gxxlinfo = lines2[0].Replace("[ae]", "ä").Replace("[AE]", "Ä").Replace("[oe]", "ö").Replace("[OE]", "Ö").Replace("[ue]", "ü").Replace("[UE]", "Ü");
+            rsinfo = lines2[1].Replace("[ae]", "ä").Replace("[AE]", "Ä").Replace("[oe]", "ö").Replace("[OE]", "Ö").Replace("[ue]", "ü").Replace("[UE]", "Ü");
+            tttinfo = lines2[2].Replace("[ae]", "ä").Replace("[AE]", "Ä").Replace("[oe]", "ö").Replace("[OE]", "Ö").Replace("[ue]", "ü").Replace("[UE]", "Ü");
+
+            progressBar1.Value++;
+            #endregion
+
             statusLabel.Text = "Fertig!";
             settings.Save();
             isAllowedToClose = true;
@@ -231,7 +247,7 @@ namespace GAMES
 
         private void LoadForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            toolTip1.Show("GAMES arbeitet gerade...", this, this.Height - 20, 1, 3000);
+            toolTip1.Show("GAMES arbeitet gerade...", this, 1, this.Height - 22, 3000);
 
             e.Cancel = !isAllowedToClose;
         }

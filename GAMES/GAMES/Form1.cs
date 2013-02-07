@@ -24,68 +24,14 @@ namespace GAMES
         {
             LoadForm lForm = new LoadForm();
             lForm.ShowDialog();
-            //zufallsPicBoxGrossSetzen();
+
+            gxxlinfothis = LoadForm.gxxlinfo;
+            rsinfothis = LoadForm.rsinfo;
+            tttinfothis = LoadForm.tttinfo;
         }
-        void zufallsPicBoxGrossSetzen()
-        {
-            Random r = new Random();
-            int tempInt = r.Next(1, 3);
-            if (tempInt == 1)
-            {
-                picBox1GrossSetzen();
-            }
-            if (tempInt == 2)
-            {
-                picBox2GrossSetzen();
-            }
-            if (tempInt == 3)
-            {
-                picBox3GrossSetzen();
-            }
-        }
-        void picBox1GrossSetzen()
-        {
-            pictureBox1.Size = new Size(200, 200);
-            pictureBox1.Location = new Point(12, 38);
-            pictureBox2.Size = new Size(50, 50);
-            pictureBox2.Location = new Point(218, 188);
-            pictureBox3.Size = new Size(50, 50);
-            pictureBox3.Location = new Point(274, 188);
-            this.BackgroundImage = null;
-            this.BackColor = Color.DimGray;
-        }
-        void picBox2GrossSetzen()
-        {
-            pictureBox2.Size = new Size(200, 200);
-            pictureBox2.Location = new Point(68, 38);
-            pictureBox1.Size = new Size(50, 50);
-            pictureBox1.Location = new Point(12, 188);
-            pictureBox3.Size = new Size(50, 50);
-            pictureBox3.Location = new Point(274, 188);
-            this.BackgroundImage = null;
-            this.BackColor = Color.CornflowerBlue;
-        }
-        void picBox3GrossSetzen()
-        {
-            pictureBox3.Size = new Size(200, 200);
-            pictureBox3.Location = new Point(124, 38);
-            pictureBox1.Size = new Size(50, 50);
-            pictureBox1.Location = new Point(12, 188);
-            pictureBox2.Size = new Size(50, 50);
-            pictureBox2.Location = new Point(68, 188);
-            this.BackgroundImage = null;
-            this.BackColor = Color.IndianRed;
-        }
-        private void pictureBox1_MouseEnter(object sender, EventArgs e)
-        {
-            picBox1GrossSetzen();
-        }
-        private void pictureBox1_MouseLeave(object sender, EventArgs e)
-        {
-            this.BackColor = Color.Empty;
-            this.BackgroundImage = Properties.Resources.BackUnderGround;
-            this.BackgroundImageLayout = ImageLayout.Stretch;
-        }
+
+        //INFOS(-TEALER.Snifula.XYZ)
+        string gxxlinfothis, rsinfothis, tttinfothis;
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
@@ -101,35 +47,6 @@ namespace GAMES
                     lForm.ShowDialog();
                 }
             }
-        }
-
-        private void pictureBox2_MouseEnter(object sender, EventArgs e)
-        {
-            picBox2GrossSetzen();
-        }
-
-        private void pictureBox2_MouseLeave(object sender, EventArgs e)
-        {
-            this.BackColor = Color.Empty;
-            this.BackgroundImage = Properties.Resources.BackUnderGround;
-            this.BackgroundImageLayout = ImageLayout.Stretch;
-        }
-
-        private void pictureBox3_MouseEnter(object sender, EventArgs e)
-        {
-            picBox3GrossSetzen();
-        }
-
-        private void pictureBox3_MouseLeave(object sender, EventArgs e)
-        {
-            this.BackColor = Color.Empty;
-            this.BackgroundImage = Properties.Resources.BackUnderGround;
-            this.BackgroundImageLayout = ImageLayout.Stretch;
-        }
-
-        private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
-        {
-           
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -162,6 +79,36 @@ namespace GAMES
                     lForm.ShowDialog();
                 }
             }
+        }
+
+        private void pictureBox1_MouseEnter(object sender, EventArgs e)
+        {
+            PictureBox sendBox = (PictureBox)sender;
+            sendBox.BackColor = Color.DimGray;
+
+            if (sender.Equals(pictureBox1))
+            {
+                label2.Text = "Gourmet XXL";
+                label1.Text = gxxlinfothis;
+            }
+
+            if (sender.Equals(pictureBox2))
+            {
+                label2.Text = "RanSen";
+                label1.Text = rsinfothis;
+            }
+
+            if (sender.Equals(pictureBox3))
+            {
+                label2.Text = "TicTacToe";
+                label1.Text = tttinfothis;
+            }
+        }
+
+        private void pictureBox1_MouseLeave(object sender, EventArgs e)
+        {
+            PictureBox sendBox = (PictureBox)sender;
+            sendBox.BackColor = Color.Transparent;
         }
     }
 }
